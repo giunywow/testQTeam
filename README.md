@@ -2,6 +2,8 @@
 
 website tested: https://magento.softwaretestingboard.com/
 
+Maven based project 
+
 for this project I've used the followings:
 - IntelliJ IDEA 2021.3.3
 - JAVA jdk17
