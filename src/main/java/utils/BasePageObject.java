@@ -14,29 +14,29 @@ import java.util.Random;
 public abstract class BasePageObject {
     private static final int REGULAR_TIMEOUT = 30;
     public BrowserHelper browserHelper = new BrowserHelper();
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     public WebDriver getDriver() {
         driver = browserHelper.getChromeDriver();
         return driver;
     }
 
-    public void waitElementIsDisplayed(WebElement element) {
+    public static void waitElementIsDisplayed(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(REGULAR_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitElementIsClickable(WebElement element) {
+    public static void waitElementIsClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(REGULAR_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitForPageLoadComplete() {
+    public static void waitForPageLoadComplete() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(REGULAR_TIMEOUT));
         wait.until(driver1 -> String.valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState")).equals("complete"));
     }
 
-    public void waitForJQuery() {
+    public static void waitForJQuery() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(REGULAR_TIMEOUT));
         ExpectedCondition<Boolean> condition = arg -> {
             try {
@@ -61,7 +61,7 @@ public abstract class BasePageObject {
         new Actions(driver).moveToElement(element).perform();
     }
 
-    public void scrollElementIntoView(WebElement element) {
+    public static void scrollElementIntoView(WebElement element) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView({behaviour: 'smooth', block: 'center'});", element);
     }
@@ -71,16 +71,5 @@ public abstract class BasePageObject {
         driver.findElement((By) element).getText().contains(expectedText);
 
     }
-
-//
-//    public WebElement fluentWait(final String locator, int timeInSeconds) {
-//        Wait<WebDriver> wait = new FluentWait<>();
-//    }
-
-//    public void waitForPageLoadComplete() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(REGULAR_TIMEOUT));
-//        wait.until(driver -> String.valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState")).equals("complete"));
-//    }
-
 }
 

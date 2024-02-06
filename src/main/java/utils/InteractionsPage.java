@@ -46,6 +46,30 @@ public class InteractionsPage {
     @FindBy(xpath = "//span[contains(text(),'Thank you for your purchase!')]") public WebElement orderSuccessMessage1;
     @FindBy(css = "[class = 'marked-element-temp']") public WebElement orderSuccessMessage2;
 
+    //login
+    @FindBy(xpath = "//a[contains(text(), 'Sign In')]") public WebElement loginLink;
+    @FindBy(id = "email") public WebElement loginEmail;
+    @FindBy(id = "pass") public WebElement loginPassword;
+    @FindBy(css = "[class = 'action login primary']") public WebElement loginSignInButton;
+    @FindBy(css = "[class = 'logged-in']") public List<WebElement> loginGreetingMessage;
+    @FindBy(css = "[class='logo']") public WebElement websitePageLogo;
+
+    //registration
+    @FindBy(xpath = "//a[contains(text(), 'Create an Account')]") public WebElement registrationLink;
+    @FindBy(id = "firstname") public WebElement registrationFirstName;
+    @FindBy(id = "lastname") public WebElement registrationLastName;
+    @FindBy(id = "email_address") public WebElement registrationEmailAddress;
+    @FindBy(id = "password") public WebElement registrationPassword;
+    @FindBy(id = "password-confirmation") public WebElement registrationConfirmPassword;
+    @FindBy(css = "[class='action submit primary']") public WebElement registrationCreateAccountButton;
+    @FindBy(xpath = "//div[contains(text(), 'Thank you for registering with Main Website Store')]") public WebElement registrationSuccessMessage;
+
+    //login error check
+    @FindBy(id = "email-error") public WebElement errorMessageLoginPageEmail;
+    @FindBy(id = "pass-error") public WebElement getErrorMessageLoginPagePasswd;
+    @FindBy(css = "[class = 'messages']") public WebElement errorMessageLoginPageFailedLogin;
+    @FindBy(xpath = "//div[contains(text(), 'The account sign-in was incorrect')]") public WebElement errorMessageLoginPageFailedLogin2;
+
 
 
 
